@@ -32,6 +32,7 @@ vex::motor FLdrive = vex::motor(PORT1,vex::gearSetting::ratio18_1,false);
 vex::motor FRdrive = vex::motor(PORT2,vex::gearSetting::ratio18_1,false);
 vex::motor BLdrive = vex::motor(PORT3,vex::gearSetting::ratio18_1,false);
 vex::motor BRdrive = vex::motor(PORT4,vex::gearSetting::ratio18_1,false);
+vex::motor testingMotor = vex::motor(PORT17,vex::gearSetting::ratio18_1,false);
 
 // A global instance of vex::competition
 vex::competition Competition;
@@ -69,7 +70,15 @@ void autonomous( void ) {
   // ..........................................................................
   // Insert autonomous user code here.
   // ..........................................................................
-
+  while(1){
+    testingMotor.spin(vex::directionType::fwd,100,vex::percentUnits::pct);
+    vex::task::sleep(1000);
+    testingMotor.stop();
+    vex::task::sleep(1000);
+    testingMotor.spin(vex::directionType::rev,100,vex::percentUnits::pct);
+    vex::task::sleep(1000);
+    testingMotor.stop();
+  }
 }
 
 /*---------------------------------------------------------------------------*/
